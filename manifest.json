@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "ClearVoice",
+    "version": "0.1.0",
+    "description": "Voice-first helper that simplifies highlighted text and reads it aloud.",
+    "action": {
+        "default_title": "ClearVoice"
+    },
+    "permissions": [
+        "sidePanel",
+        "tabs",
+        "scripting",
+        "activeTab"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "background": {
+        "service_worker": "sw.js",
+        "type": "module"
+    },
+    "side_panel": {
+        "default_path": "sidepanel.html"
+    }
+}
