@@ -1,28 +1,30 @@
 <!doctype html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8" />
     <title>ClearVoice</title>
     <style>
         body {
-            font-family: system-ui, Arial;
+            font-family: system-ui, Arial, sans-serif;
             margin: 12px;
         }
 
         h2 {
-            margin: 0 0 10px;
+            margin-bottom: 10px;
         }
 
         textarea {
             width: 100%;
             height: 140px;
+            box-sizing: border-box;
         }
 
         button {
-            margin-top: 10px;
             width: 100%;
+            margin-top: 10px;
             padding: 10px;
+            cursor: pointer;
         }
 
         .note {
@@ -35,9 +37,16 @@
 
 <body>
     <h2>ClearVoice</h2>
-    <textarea id="input" placeholder="Selected text will go here…"></textarea>
-    <button id="testBtn">Test: Panel Works</button>
-    <div class="note">Next: we’ll capture highlighted text from the page.</div>
+
+    <textarea id="input" placeholder="Selected text will appear here..."></textarea>
+
+    <button id="useSelectionBtn">Use Selected Text</button>
+    <button id="testBtn">Test Panel</button>
+
+    <div class="note">
+        Highlight text on a webpage, then click "Use Selected Text".
+    </div>
+
     <script src="sidepanel.js"></script>
 </body>
 
