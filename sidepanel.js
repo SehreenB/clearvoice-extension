@@ -12,26 +12,27 @@ useSelectionBtn.addEventListener("click", async () => {
         currentWindow: true
     });
 
-    if (!tab || !tab.id) {
-        alert("No active tab found");
+    if (!tab?.id) {
+        alert("No active tab found.");
         return;
     }
 
-    chrome.tabs.sendMessage(
-        tab.id,
-        { type: "GET_SELECTION" },
-        (response) => {
-            if (chrome.runtime.lastError) {
-                alert("Content script not responding. Reload the page and try again.");
-                return;
-            }
-
-            if (!response || !response.selection.trim()) {
-                alert("No text selected. Highlight some text first.");
-                return;
-            }
-
-            input.value = response.selection;
+    chrome.tabs.sendMessage(tab.id, { type: "GET_SELECTION" }, (response) => {
+        if (chrome.runtime.lastError) {
+            alert(
+                "Couldn’t read selection on this page. Try refreshing the page, or ensure the extension has access."
+            );
+            return;
         }
-    );
+
+        const selection = response?.selection || "";
+        if (!selection.trim()) {
+            alert(
+                "No text detected. Highlight text on the page (not an image). Some sites may block selection."
+            );
+            return;
+        }
+
+        input.value = selection;
+    });
 });
