@@ -1,15 +1,14 @@
 {
     "manifest_version": 3,
     "name": "ClearVoice",
-    "version": "0.1.1",
-    "description": "Voice-first helper that simplifies highlighted text and reads it aloud.",
-    "action": {
-        "default_title": "ClearVoice"
-    },
+    "version": "0.4.0",
+    "description": "Student helper: short explanations, multi-language UI, snip OCR + read aloud.",
     "permissions": [
-        "sidePanel",
+        "activeTab",
         "tabs",
-        "activeTab"
+        "scripting",
+        "sidePanel",
+        "storage"
     ],
     "host_permissions": [
         "<all_urls>"
@@ -28,7 +27,8 @@
             "js": [
                 "content.js"
             ],
-            "all_frames": true
+            "all_frames": true,
+            "run_at": "document_idle"
         }
     ]
 }
