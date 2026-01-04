@@ -3,53 +3,63 @@
 
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>ClearVoice</title>
-    <style>
-        body {
-            font-family: system-ui, Arial, sans-serif;
-            margin: 12px;
-        }
-
-        h2 {
-            margin-bottom: 10px;
-        }
-
-        textarea {
-            width: 100%;
-            height: 140px;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 100%;
-            margin-top: 10px;
-            padding: 10px;
-            cursor: pointer;
-        }
-
-        .note {
-            margin-top: 10px;
-            font-size: 12px;
-            opacity: 0.8;
-            line-height: 1.3;
-        }
-    </style>
+    <link rel="stylesheet" href="sidepanel.css" />
 </head>
 
 <body>
-    <h2>ClearVoice</h2>
+    <div class="container">
+        <header class="header">
+            <h1 id="title">ClearVoice</h1>
+            <p class="subtitle" id="subtitle">Less text. More clarity.</p>
+        </header>
 
-    <textarea id="input" placeholder="Selected text will appear here..."></textarea>
+        <section class="block">
+            <label for="input" id="lblInput">Input</label>
+            <textarea id="input" placeholder="Highlight text, then use the buttons below…"></textarea>
 
-    <button id="useSelectionBtn">Use Selected Text</button>
-    <button id="testBtn">Test Panel</button>
+            <div class="row">
+                <button id="useSelectionBtn" class="btn secondary">Use Selected Text</button>
+                <button id="snipBtn" class="btn secondary">Snip Screenshot</button>
+            </div>
+            <div class="hint" id="snipHint">Tip: Click Snip, then drag to select an area. Press ESC to cancel.</div>
+        </section>
 
-    <div class="note">
-        Tip: Some pages (chrome://, Chrome Web Store) block extensions.<br />
-        If a site uses iframes, this version is more compatible.
+        <section class="block">
+            <label id="lblTools">Student tools</label>
+
+            <div class="controls">
+                <label for="langSelect" id="lblLang">Language</label>
+                <select id="langSelect">
+                    <option value="English" selected>English</option>
+                    <option value="French">Français</option>
+                    <option value="Spanish">Español</option>
+                    <option value="Mandarin Chinese">中文</option>
+                    <option value="Punjabi (Gurmukhi)">ਪੰਜਾਬੀ</option>
+                </select>
+            </div>
+
+            <div class="grid">
+                <button class="btn primary" data-mode="question_intent" id="btnAsk">What is this asking?</button>
+                <button class="btn primary" data-mode="step_by_step" id="btnSteps">Break into steps</button>
+                <button class="btn primary" data-mode="plain_english" id="btnPlain">Plain English</button>
+                <button class="btn primary" data-mode="concept_helper" id="btnConcept">Which concept?</button>
+            </div>
+
+            <div class="row" style="margin-top:10px;">
+                <button id="speakBtn" class="btn ghost" disabled>Read it to me</button>
+                <button id="stopBtn" class="btn ghost" disabled>Stop</button>
+            </div>
+        </section>
+
+        <section class="block">
+            <label id="lblOutput">Output</label>
+            <div id="output" class="output">Your explanation will appear here…</div>
+        </section>
+
+        <script src="sidepanel.js"></script>
     </div>
-
-    <script src="sidepanel.js"></script>
 </body>
 
 </html>
